@@ -11,4 +11,24 @@
 // * Return a result from the function
 // * The Err variant should detail the reason why they cannot make a purchase
 
-fn main() {}
+
+
+// * Use a struct to store at least the age of a customer
+struct Custumer {
+    age: i32,
+}
+
+// * Use a function to determine if a customer can make a restricted purchase
+fn make_restricted(custumer: &Custumer) -> Result<(), String> {
+    if custumer.age < 21 {
+        Err("Invalid".to_owned())
+    } else {
+        Ok(())
+    }
+}
+
+fn main() {
+    let ashley = Custumer { age: 21 };
+    let purchased = make_restricted(&ashley);
+    println!("{:?}", purchased);
+}
